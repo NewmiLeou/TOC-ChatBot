@@ -1,2 +1,4 @@
 # TOC-ChatBot
-Final Program of TOC class
+Final Program for TOC class
+
+A Facebook messenger bot based on a finite state machine
