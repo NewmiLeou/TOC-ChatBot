@@ -4,6 +4,7 @@ Final Program for TOC class
 A Facebook messenger bot based on a finite state machine
 
 
+
 ## Features
 
 ### Button
@@ -16,7 +17,11 @@ A Facebook messenger bot based on a finite state machine
 ### Web Crawler
 * BeautifulSoup
 
+
+
 ## Finite State Machine
+![fsm](fsm.png)
+
 
 
 ## Usage
@@ -30,6 +35,8 @@ Every time `user` state is triggered to `advance` to another state, it will `go_
 
 	* Input: "go to state2"
 		* Reply: "I'm entering state2"
+
+
 
 
 ## Reference
