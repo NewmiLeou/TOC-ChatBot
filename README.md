@@ -17,7 +17,7 @@ A Facebook messenger bot based on a finite state machine
 * BeautifulSoup
 
 ## Finite State Machine
-![fsm](./img/show-fsm.png)
+
 
 ## Usage
 The initial state is set to `user`.
