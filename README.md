@@ -30,8 +30,9 @@ Every time `user` state is triggered to `advance` to another state, it will trig
 
 * user
 	* Input: "air jordan"
-		* Reply: 
-		![air jordan](jordan.png)
+	* Reply: 
+		
+	![air jordan](jordan.png)
 
 	* Input: "adidas"
 		* Reply: 
