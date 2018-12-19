@@ -31,16 +31,30 @@ Every time `user` state is triggered to `advance` to another state, it will trig
 * user
 	* Input: "air jordan"
 		* Reply: 
-			![air jordan](./img/air_jordan.png)
+		
+		![air jordan](jordan.png)
 
 	* Input: "adidas"
-		* Reply: 
-	
+		* Reply: Is similar as input "air jordan"
+		
 	* Input: "nike"
-		* Reply: 
+		* Reply: Is similar as input "air jordan"
 	
 	* Input: "yeezy"
+		* Reply: Is similar as input "air jordan"
+
+* jordan
+	* Input: Click the "Air Jordan1" postback button
 		* Reply: 
+		
+		![air jordan1](jordan1.png)
+	* Input: Click the "Air Jordan4" postback button
+		* Reply: Is similar as click the "Air Jordan1" postback button
+		
+	* Input: Click the "Air Jordan11" postback button
+		* Reply: Is similar as click the "Air Jordan1" postback button
+* The state `adidas` , ` nike` , `yeezy` has the same algorithm as `jordan`
+
 
 
 
