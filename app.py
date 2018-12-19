@@ -1,3 +1,4 @@
+import os
 from bottle import route, run, request, abort, static_file
 
 from fsm import TocMachine
@@ -186,6 +187,7 @@ def show_fsm():
     machine.get_graph().draw('fsm.png', prog='dot', format='png')
     return static_file('fsm.png', root='./', mimetype='image/png')
 
+PORT = os.environ['PORT']
 
 if __name__ == "__main__":
-    run(host="localhost", port=5000, debug=True, reloader=True)
+    run(host="0.0.0.0", port=PORT, debug=True, reloader=True)
