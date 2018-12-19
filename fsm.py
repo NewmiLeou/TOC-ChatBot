@@ -535,7 +535,7 @@ class TocMachine(GraphMachine):
         img_url = get_street_pop_img()
         price = get_street_price()
         send_image_url(sender_id, img_url)
-        responese = send_button_message(sender_id,"This is the most popular streetwear recently🔥\n👟Name : "+name+"\n" \
+        responese = send_button_message(sender_id,"This is the most popular streetwear recently🔥\n??Name : "+name+"\n" \
                                                     "💸Price : US"+price+"\n👇🏻Click the button below to see more Streetwear"
                                                     ,buttons)
         self.go_back()
