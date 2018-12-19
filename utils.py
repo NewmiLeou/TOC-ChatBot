@@ -66,7 +66,7 @@ def send_button_message(id, text, buttons):
 def get_jordan_pop_name(series):
     url = 'https://stockx.com/retro-jordans/air-jordan-%d/most-popular'%series
     res = requests.get(url)
-    soup = BeautifulSoup(res.text,features='lxml')
+    soup = BeautifulSoup(res.text,"html.parser")
     div = soup.find('div',{'class':'img image-link'})
     pop = div.findAll('img')[0]['alt']
     return pop
@@ -74,7 +74,7 @@ def get_jordan_pop_name(series):
 def get_jordan_pop_img(series):
     url = 'https://stockx.com/retro-jordans/air-jordan-%d/most-popular'%series
     res = requests.get(url)
-    soup = BeautifulSoup(res.text,features='lxml')
+    soup = BeautifulSoup(res.text,"html.parser")
     div = soup.find('div',{'class':'img image-link'})
     pop = div.findAll('img')[0]['src']
     return pop
@@ -82,7 +82,7 @@ def get_jordan_pop_img(series):
 def get_jordan_price(series):
     url = 'https://stockx.com/retro-jordans/air-jordan-%d/most-popular'%series
     res = requests.get(url)
-    soup = BeautifulSoup(res.text,features='lxml')
+    soup = BeautifulSoup(res.text,"html.parser")
     div = soup.find('div',{'class':'price-line'})
     price = div.findAll('div')[1].string
     return price
@@ -91,7 +91,7 @@ def get_jordan_price(series):
 def get_adidas_pop_name(series):
     url = 'https://stockx.com/adidas/%s/most-popular'%series
     res = requests.get(url)
-    soup = BeautifulSoup(res.text,features='lxml')
+    soup = BeautifulSoup(res.text,"html.parser")
     div = soup.find('div',{'class':'img image-link'})
     pop = div.findAll('img')[0]['alt']
     return pop
@@ -99,7 +99,7 @@ def get_adidas_pop_name(series):
 def get_adidas_pop_img(series):
     url = 'https://stockx.com/adidas/%s/most-popular'%series
     res = requests.get(url)
-    soup = BeautifulSoup(res.text,features='lxml')
+    soup = BeautifulSoup(res.text,"html.parser")
     div = soup.find('div',{'class':'img image-link'})
     pop = div.findAll('img')[0]['src']
     return pop
@@ -107,7 +107,7 @@ def get_adidas_pop_img(series):
 def get_adidas_price(series):
     url = 'https://stockx.com/adidas/%s/most-popular'%series
     res = requests.get(url)
-    soup = BeautifulSoup(res.text,features='lxml')
+    soup = BeautifulSoup(res.text,"html.parser")
     div = soup.find('div',{'class':'price-line'})
     price = div.findAll('div')[1].string
     return price
@@ -116,7 +116,7 @@ def get_adidas_price(series):
 def get_nike_pop_name(series):
     url = 'https://stockx.com/nike/%s/most-popular'%series
     res = requests.get(url)
-    soup = BeautifulSoup(res.text,features='lxml')
+    soup = BeautifulSoup(res.text,"html.parser")
     div = soup.find('div',{'class':'img image-link'})
     pop = div.findAll('img')[0]['alt']
     return pop
@@ -124,7 +124,7 @@ def get_nike_pop_name(series):
 def get_nike_pop_img(series):
     url = 'https://stockx.com/nike/%s/most-popular'%series
     res = requests.get(url)
-    soup = BeautifulSoup(res.text,features='lxml')
+    soup = BeautifulSoup(res.text,"html.parser")
     div = soup.find('div',{'class':'img image-link'})
     pop = div.findAll('img')[0]['src']
     return pop
@@ -132,7 +132,7 @@ def get_nike_pop_img(series):
 def get_nike_price(series):
     url = 'https://stockx.com/nike/%s/most-popular'%series
     res = requests.get(url)
-    soup = BeautifulSoup(res.text,features='lxml')
+    soup = BeautifulSoup(res.text,"html.parser")
     div = soup.find('div',{'class':'price-line'})
     price = div.findAll('div')[1].string
     return price
@@ -141,7 +141,7 @@ def get_nike_price(series):
 def get_yeezy_pop_name(series):
     url = 'https://stockx.com/adidas/yeezy/%d/most-popular'%series
     res = requests.get(url)
-    soup = BeautifulSoup(res.text,features='lxml')
+    soup = BeautifulSoup(res.text,"html.parser")
     div = soup.find('div',{'class':'img image-link'})
     pop = div.findAll('img')[0]['alt']
     return pop
@@ -149,7 +149,7 @@ def get_yeezy_pop_name(series):
 def get_yeezy_pop_img(series):
     url = 'https://stockx.com/adidas/yeezy/%d/most-popular'%series
     res = requests.get(url)
-    soup = BeautifulSoup(res.text,features='lxml')
+    soup = BeautifulSoup(res.text,"html.parser")
     div = soup.find('div',{'class':'img image-link'})
     pop = div.findAll('img')[0]['src']
     return pop
@@ -165,7 +165,7 @@ def get_yeezy_price(series):
 def get_street_pop_name():
     url = 'https://stockx.com/streetwear/most-popular'
     res = requests.get(url)
-    soup = BeautifulSoup(res.text,features='lxml')
+    soup = BeautifulSoup(res.text,"html.parser")
     div = soup.find('div',{'class':'img image-link'})
     pop = div.findAll('img')[0]['alt']
     return pop
@@ -173,7 +173,7 @@ def get_street_pop_name():
 def get_street_pop_img():
     url = 'https://stockx.com/streetwear/most-popular'
     res = requests.get(url)
-    soup = BeautifulSoup(res.text,features='lxml')
+    soup = BeautifulSoup(res.text,"html.parser")
     div = soup.find('div',{'class':'img image-link'})
     pop = div.findAll('img')[0]['src']
     return pop
@@ -181,7 +181,7 @@ def get_street_pop_img():
 def get_street_price():
     url = 'https://stockx.com/streetwear/most-popular'
     res = requests.get(url)
-    soup = BeautifulSoup(res.text,features='lxml')
+    soup = BeautifulSoup(res.text,"html.parser")
     div = soup.find('div',{'class':'price-line'})
     price = div.findAll('div')[1].string
     return price
