@@ -157,7 +157,7 @@ def get_yeezy_pop_img(series):
 def get_yeezy_price(series):
     url = 'https://stockx.com/adidas/yeezy/%d/most-popular'%series
     res = requests.get(url)
-    soup = BeautifulSoup(res.text,features='lxml')
+    soup = BeautifulSoup(res.text,"html.parser")
     div = soup.find('div',{'class':'price-line'})
     price = div.findAll('div')[1].string
     return price
