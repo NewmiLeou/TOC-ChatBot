@@ -136,3 +136,52 @@ def get_nike_price(series):
     div = soup.find('div',{'class':'price-line'})
     price = div.findAll('div')[1].string
     return price
+
+#yeezy
+def get_yeezy_pop_name(series):
+    url = 'https://stockx.com/adidas/yeezy/%d/most-popular'%series
+    res = requests.get(url)
+    soup = BeautifulSoup(res.text,features='lxml')
+    div = soup.find('div',{'class':'img image-link'})
+    pop = div.findAll('img')[0]['alt']
+    return pop
+
+def get_yeezy_pop_img(series):
+    url = 'https://stockx.com/adidas/yeezy/%d/most-popular'%series
+    res = requests.get(url)
+    soup = BeautifulSoup(res.text,features='lxml')
+    div = soup.find('div',{'class':'img image-link'})
+    pop = div.findAll('img')[0]['src']
+    return pop
+
+def get_yeezy_price(series):
+    url = 'https://stockx.com/adidas/yeezy/%d/most-popular'%series
+    res = requests.get(url)
+    soup = BeautifulSoup(res.text,features='lxml')
+    div = soup.find('div',{'class':'price-line'})
+    price = div.findAll('div')[1].string
+    return price
+
+def get_street_pop_name():
+    url = 'https://stockx.com/streetwear/most-popular'
+    res = requests.get(url)
+    soup = BeautifulSoup(res.text,features='lxml')
+    div = soup.find('div',{'class':'img image-link'})
+    pop = div.findAll('img')[0]['alt']
+    return pop
+
+def get_street_pop_img():
+    url = 'https://stockx.com/streetwear/most-popular'
+    res = requests.get(url)
+    soup = BeautifulSoup(res.text,features='lxml')
+    div = soup.find('div',{'class':'img image-link'})
+    pop = div.findAll('img')[0]['src']
+    return pop
+
+def get_street_price():
+    url = 'https://stockx.com/streetwear/most-popular'
+    res = requests.get(url)
+    soup = BeautifulSoup(res.text,features='lxml')
+    div = soup.find('div',{'class':'price-line'})
+    price = div.findAll('div')[1].string
+    return price

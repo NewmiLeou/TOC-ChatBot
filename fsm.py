@@ -12,6 +12,12 @@ from utils import get_adidas_price
 from utils import get_nike_pop_name
 from utils import get_nike_pop_img
 from utils import get_nike_price
+from utils import get_yeezy_pop_name
+from utils import get_yeezy_pop_img
+from utils import get_yeezy_price
+from utils import get_street_pop_name
+from utils import get_street_pop_img
+from utils import get_street_price
 
 
 class TocMachine(GraphMachine):
@@ -56,11 +62,11 @@ class TocMachine(GraphMachine):
                 return text.lower() == 'adidas'
         return False
     
-    def is_going_to_yeezy(self, event):
+    def is_going_to_iniki(self, event):
         if event.get("postback"):
             if event['postback'].get('payload'):
                 text = event['postback']['payload']
-                return text.lower() == 'yeezy'
+                return text.lower() == 'iniki'
         return False
     
     def is_going_to_ultra(self, event):
@@ -104,7 +110,42 @@ class TocMachine(GraphMachine):
                 text = event['postback']['payload']
                 return text.lower() == 'basketball'
         return False
+
+    def is_going_to_yeezy(self, event):
+        if event.get("message"):
+            if event['message'].get('text'):
+                text = event['message']['text']
+                return text.lower() == 'yeezy'
+        return False
     
+    def is_going_to_350(self, event):
+        if event.get("postback"):
+            if event['postback'].get('payload'):
+                text = event['postback']['payload']
+                return text.lower() == 'yeezy 350'
+        return False
+    
+    def is_going_to_500(self, event):
+        if event.get("postback"):
+            if event['postback'].get('payload'):
+                text = event['postback']['payload']
+                return text.lower() == 'yeezy 500'
+        return False
+    
+    def is_going_to_700(self, event):
+        if event.get("postback"):
+            if event['postback'].get('payload'):
+                text = event['postback']['payload']
+                return text.lower() == 'yeezy 700'
+        return False
+    
+    def is_going_to_recommend(self, event):
+        if event.get("message"):
+            if event['message'].get('text'):
+                text = event['message']['text']
+                return text.lower() == 'recommend me some streetwear to fit this shoe'
+        return False
+
     #jordan
     def on_enter_jordan(self, event):
         print("I'm entering jordan")
@@ -143,7 +184,7 @@ class TocMachine(GraphMachine):
                         "type": "web_url",
                         "url":"https://stockx.com/retro-jordans/air-jordan-1",
                         "title": "See more Air Jordan1"
-                    }
+                    },
         ]
         name = get_jordan_pop_name(1)
         img_url = get_jordan_pop_img(1)
@@ -152,10 +193,8 @@ class TocMachine(GraphMachine):
         responese = send_button_message(sender_id,"This is the most popular shoes in Air Jordan1 series🔥\n👟Name : "+name+"\n" \
                                                     "💸Price : US"+price+"\n👇🏻Click the button below to see more Air Jordan1 series"
                                                     ,buttons)
-        self.go_back()
+        
 
-    def on_exit_jordan1(self):
-        print('Leaving jordan1')
 
     #jordan4
     def on_enter_jordan4(self, event):
@@ -167,6 +206,11 @@ class TocMachine(GraphMachine):
                         "type": "web_url",
                         "url":"https://stockx.com/retro-jordans/air-jordan-4",
                         "title": "See more Air Jordan4"
+                    },
+                    {
+                        "type": "postback",
+                        "title":"Choose some streetwear to fit this shoe!",
+                        "title": "Choose some streetwear to fit this shoe!"
                     }
         ]
         name = get_jordan_pop_name(4)
@@ -176,10 +220,7 @@ class TocMachine(GraphMachine):
         responese = send_button_message(sender_id,"This is the most popular shoes in Air Jordan4 series🔥\n👟Name : "+name+"\n" \
                                                     "💸Price : US"+price+"\n👇🏻Click the button below to see more Air Jordan4 series"
                                                     ,buttons)
-        self.go_back()
-
-    def on_exit_jordan4(self):
-        print('Leaving jordan4')
+       
 
     #jordan11
     def on_enter_jordan11(self, event):
@@ -200,20 +241,17 @@ class TocMachine(GraphMachine):
         responese = send_button_message(sender_id,"This is the most popular shoes in Air Jordan11 series🔥\n👟Name : "+name+"\n" \
                                                     "💸Price : US"+price+"\n👇🏻Click the button below to see more Air Jordan11 series"
                                                     ,buttons)
-        self.go_back()
-
-    def on_exit_jordan11(self):
-        print('Leaving jordan11')
+        
 
     #adidas
     def on_enter_adidas(self, event):
-        print("I'm entering jordan")
+        print("I'm entering adidas")
 
         buttons = [
                     {
                         "type": "postback",
-                        "title": "Yeezy",
-                        "payload": "Yeezy" 
+                        "title": "Iniki",
+                        "payload": "Iniki" 
                         
                     },
                     {
@@ -234,28 +272,25 @@ class TocMachine(GraphMachine):
         #self.go_back()
 
     #yeezy
-    def on_enter_yeezy(self, event):
-        print("I'm entering yeezy")
+    def on_enter_iniki(self, event):
+        print("I'm entering iniki")
 
         sender_id = event['sender']['id']
         buttons = [
                     {
                         "type": "web_url",
                         "url":"https://stockx.com/adidas/yeezy",
-                        "title": "See more Yeezy"
+                        "title": "See more Iniki"
                     }
         ]
-        name = get_adidas_pop_name("yeezy")
-        img_url = get_adidas_pop_img("yeezy")
-        price = get_adidas_price("yeezy")
+        name = get_adidas_pop_name("iniki")
+        img_url = get_adidas_pop_img("iniki")
+        price = get_adidas_price("iniki")
         send_image_url(sender_id, img_url)
-        responese = send_button_message(sender_id,"This is the most popular shoes in Yeezy series🔥\n👟Name : "+name+"\n" \
-                                                    "💸Price : US"+price+"\n👇🏻Click the button below to see more Yeezy series"
+        responese = send_button_message(sender_id,"This is the most popular shoes in Iniki series🔥\n👟Name : "+name+"\n" \
+                                                    "💸Price : US"+price+"\n👇🏻Click the button below to see more Iniki series"
                                                     ,buttons)
-        self.go_back()
-
-    def on_exit_yeezy(self):
-        print('Leaving yeezy')
+       
     
     #ultra
     def on_enter_ultra(self, event):
@@ -276,10 +311,7 @@ class TocMachine(GraphMachine):
         responese = send_button_message(sender_id,"This is the most popular shoes in Ultra Boost series🔥\n👟Name : "+name+"\n" \
                                                     "💸Price : US"+price+"\n👇🏻Click the button below to see more Ultra Boost series"
                                                     ,buttons)
-        self.go_back()
-
-    def on_exit_ultra(self):
-        print('Leaving ultra')
+        
 
     #nmd
     def on_enter_nmd(self, event):
@@ -300,10 +332,8 @@ class TocMachine(GraphMachine):
         responese = send_button_message(sender_id,"This is the most popular shoes in NMD series🔥\n👟Name : "+name+"\n" \
                                                     "💸Price : US"+price+"\n👇🏻Click the button below to see more NMD series"
                                                     ,buttons)
-        self.go_back()
 
-    def on_exit_nmd(self):
-        print('Leaving nmd')
+
 
     #nike
     def on_enter_nike(self, event):
@@ -352,10 +382,7 @@ class TocMachine(GraphMachine):
         responese = send_button_message(sender_id,"This is the most popular shoes in Air Force series🔥\n👟Name : "+name+"\n" \
                                                     "💸Price : US"+price+"\n👇🏻Click the button below to see more Air Force series"
                                                     ,buttons)
-        self.go_back()
-
-    def on_exit_airforce(self):
-        print('Leaving air force')
+       
 
     #air max
     def on_enter_airmax(self, event):
@@ -376,10 +403,7 @@ class TocMachine(GraphMachine):
         responese = send_button_message(sender_id,"This is the most popular shoes in Air Max series🔥\n👟Name : "+name+"\n" \
                                                     "💸Price : US"+price+"\n👇🏻Click the button below to see more Air Max series"
                                                     ,buttons)
-        self.go_back()
-
-    def on_exit_airmax(self):
-        print('Leaving air max')
+       
 
     #basketball
     def on_enter_basketball(self, event):
@@ -400,7 +424,122 @@ class TocMachine(GraphMachine):
         responese = send_button_message(sender_id,"This is the most popular shoes in Basketball series🔥\n👟Name : "+name+"\n" \
                                                     "💸Price : US"+price+"\n👇🏻Click the button below to see more Basketball series"
                                                     ,buttons)
+    
+    #yeezy
+    def on_enter_yeezy(self, event):
+        print("I'm entering yeezy")
+
+        buttons = [
+                    {
+                        "type": "postback",
+                        "title": "YEEZY 350",
+                        "payload": "YEEZY 350" 
+                        
+                    },
+                    {
+                        "type": "postback",
+                        "title": "YEEZY 500",
+                        "payload": "YEEZY 500" 
+                        
+                    },
+                    {
+                        
+                        "type": "postback",
+                        "title": "YEEZY 700",
+                        "payload": "YEEZY 700" 
+                    }
+        ]
+        sender_id = event['sender']['id']
+        responese = send_button_message(sender_id,"These three series are popular recently🔥\nWhich series do you what to find?",buttons)
+        
+
+    #350
+    def on_enter_350(self, event):
+        print("I'm entering 350")
+
+        sender_id = event['sender']['id']
+        buttons = [
+                    {
+                        "type": "web_url",
+                        "url":"https://stockx.com/adidas/yeezy/350/most-popular",
+                        "title": "See more YEEZY 350"
+                    }
+        ]
+        name = get_yeezy_pop_name(350)
+        img_url = get_yeezy_pop_img(350)
+        price = get_yeezy_price(350)
+        send_image_url(sender_id, img_url)
+        responese = send_button_message(sender_id,"This is the most popular shoes in YEEZY 350 series🔥\n👟Name : "+name+"\n" \
+                                                    "💸Price : US"+price+"\n👇🏻Click the button below to see more YEEZY 350 series"
+                                                    ,buttons)
+   
+
+
+    #500
+    def on_enter_500(self, event):
+        print("I'm entering 500")
+
+        sender_id = event['sender']['id']
+        buttons = [
+                    {
+                        "type": "web_url",
+                        "url":"https://stockx.com/adidas/yeezy/500/most-popular",
+                        "title": "See more YEEZY 500"
+                    }
+        ]
+        name = get_yeezy_pop_name(500)
+        img_url = get_yeezy_pop_img(500)
+        price = get_yeezy_price(500)
+        send_image_url(sender_id, img_url)
+        responese = send_button_message(sender_id,"This is the most popular shoes in YEEZY 500 series🔥\n👟Name : "+name+"\n" \
+                                                    "💸Price : US"+price+"\n👇🏻Click the button below to see more YEEZY 500 series"
+                                                    ,buttons)
+      
+
+
+    #700
+    def on_enter_700(self, event):
+        print("I'm entering 700")
+
+        sender_id = event['sender']['id']
+        buttons = [
+                    {
+                        "type": "web_url",
+                        "url":"https://stockx.com/adidas/yeezy/700/most-popular",
+                        "title": "See more YEEZY 700"
+                    }
+        ]
+        name = get_yeezy_pop_name(700)
+        img_url = get_yeezy_pop_img(700)
+        price = get_yeezy_price(700)
+        send_image_url(sender_id, img_url)
+        responese = send_button_message(sender_id,"This is the most popular shoes in YEEZY 700 series🔥\n👟Name : "+name+"\n" \
+                                                    "💸Price : US"+price+"\n👇🏻Click the button below to see more YEEZY 700 series"
+                                                    ,buttons)
+   
+
+    
+    #recommend
+    def on_enter_recommend(self, event):
+        print("I'm entering recommend")
+
+        sender_id = event['sender']['id']
+        buttons = [
+                    {
+                        "type": "web_url",
+                        "url":"https://stockx.com/streetwear/most-popular",
+                        "title": "See more Streetwear"
+                    }
+        ]
+        name = get_street_pop_name()
+        img_url = get_street_pop_img()
+        price = get_street_price()
+        send_image_url(sender_id, img_url)
+        responese = send_button_message(sender_id,"This is the most popular streetwear recently🔥\n👟Name : "+name+"\n" \
+                                                    "💸Price : US"+price+"\n👇🏻Click the button below to see more Streetwear"
+                                                    ,buttons)
         self.go_back()
 
-    def on_exit_basketball(self):
-        print('Leaving basketball')
+    def on_exit_recommend(self):
+        print('Leaving recommend')
+    

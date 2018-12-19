@@ -13,13 +13,18 @@ machine = TocMachine(
         'jordan4',
         'jordan11',
         'adidas',
-        'yeezy',
+        'iniki',
         'ultra',
         'nmd',
         'nike',
         'airforce',
         'airmax',
-        'basketball'
+        'basketball',
+        'yeezy',
+        '350',
+        '500',
+        '700',
+        'recommend'
     ],
     transitions=[
         {
@@ -55,8 +60,8 @@ machine = TocMachine(
         {
             'trigger': 'advance',
             'source': 'adidas',
-            'dest': 'yeezy',
-            'conditions': 'is_going_to_yeezy'
+            'dest': 'iniki',
+            'conditions': 'is_going_to_iniki'
         },
         {
             'trigger': 'advance',
@@ -95,18 +100,51 @@ machine = TocMachine(
             'conditions': 'is_going_to_basketball'
         },
         {
-            'trigger': 'go_back',
+            'trigger': 'advance',
+            'source': 'user',
+            'dest': 'yeezy',
+            'conditions': 'is_going_to_yeezy'
+        },
+        {
+            'trigger': 'advance',
+            'source': 'yeezy',
+            'dest': '350',
+            'conditions': 'is_going_to_350'
+        },
+        {
+            'trigger': 'advance',
+            'source': 'yeezy',
+            'dest': '500',
+            'conditions': 'is_going_to_500'
+        },
+        {
+            'trigger': 'advance',
+            'source': 'yeezy',
+            'dest': '700',
+            'conditions': 'is_going_to_700'
+        },
+        {
+            'trigger': 'advance',
             'source': [
                 'jordan1',
                 'jordan4',
                 'jordan11',
-                'yeezy',
+                'iniki',
                 'ultra',
                 'nmd',
                 'airforce',
                 'airmax',
-                'basketball'
+                'basketball',
+                '350',
+                '500',
+                '700',
             ],
+            'dest': 'recommend',
+            'conditions': 'is_going_to_recommend'
+        },
+        {
+            'trigger': 'go_back',
+            'source': 'recommend',
             'dest': 'user'
         }
     ],
