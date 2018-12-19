@@ -6,16 +6,15 @@ A Facebook messenger bot based on a finite state machine
 
 
 ## Features
-
 ### Button
 * web_url button
 * postback button
 
 ### Image
-
+* It can send image of the collection
 
 ### Web Crawler
-* BeautifulSoup
+* Use BeautifulSoup to crawl stockX website info
 
 
 
@@ -27,14 +26,21 @@ A Facebook messenger bot based on a finite state machine
 ## Usage
 The initial state is set to `user`.
 
-Every time `user` state is triggered to `advance` to another state, it will `go_back` to `user` state after the bot replies corresponding message.
+Every time `user` state is triggered to `advance` to another state, it will trigger `is_going_to_jordan` or `is_going_to_adidas` or `is_going_to_nike` or `is_going_to_yeezy`.
 
 * user
-	* Input: "go to state1"
-		* Reply: "I'm entering state1"
+	* Input: "air jordan"
+		* Reply: 
+			![air jordan](./img/air_jordan.png)
 
-	* Input: "go to state2"
-		* Reply: "I'm entering state2"
+	* Input: "adidas"
+		* Reply: 
+	
+	* Input: "nike"
+		* Reply: 
+	
+	* Input: "yeezy"
+		* Reply: 
 
 
 
